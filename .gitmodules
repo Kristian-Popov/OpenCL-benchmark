@@ -1,0 +1,12 @@
+[submodule "contrib/catch"]
+	path = contrib/catch
+	url = https://github.com/catchorg/Catch2
+[submodule "contrib/Khronos-OpenCL-ICD-Loader"]
+	path = contrib/Khronos-OpenCL-ICD-Loader
+	url = https://github.com/KhronosGroup/OpenCL-ICD-Loader
+[submodule "contrib/OpenCL-Headers"]
+	path = contrib/OpenCL-Headers
+	url = https://github.com/KhronosGroup/OpenCL-Headers
+[submodule "contrib/nlohmann-json"]
+	path = contrib/nlohmann-json
+	url = https://github.com/nlohmann/json
