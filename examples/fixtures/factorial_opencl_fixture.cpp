@@ -45,7 +45,7 @@ kpv::cl_benchmark::EventList FactorialOpenClFixture::Execute(
     kpv::cl_benchmark::EventList event_list;
 
     // create a vector on the device
-    boost::compute::vector<int> input_device_vector(data_size_, context);
+    boost::compute::vector<cl_int> input_device_vector(data_size_, context);
 
     // copy data from the host to the device
     event_list.AddOpenClEvent(

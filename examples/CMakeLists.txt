@@ -6,6 +6,8 @@ add_executable (${PROJECT_NAME}
     examples-main.cpp
     fixtures/factorial_opencl_fixture.cpp
     fixtures/factorial_opencl_fixture.h
+    fixtures/cuboid_opencl_fixture.cpp
+    fixtures/cuboid_opencl_fixture.h
 )
 
 # target_include_directories (${PROJECT_NAME}  PUBLIC ${OpenCL_INCLUDE_DIRS} 
