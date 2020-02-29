@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "boost/compute.hpp"
-#include "opencl_event.hpp"
+#include "detail/events/opencl_event.hpp"
 
 namespace kpv {
 namespace cl_benchmark {
@@ -29,6 +29,15 @@ public:
 
     template <typename T>
     void AddOpenClEvent(const std::string& step_name, boost::compute::future<T>& e) {
+        AddOpenClEvent(step_name, e.get_event());
+    }
+
+    void AddOpenClEvent(const std::string& step_name, boost::compute::event&& e) {
+        events_.push_back({step_name, std::make_unique<OpenClEvent>(e)});
+    }
+
+    template <typename T>
+    void AddOpenClEvent(const std::string& step_name, boost::compute::future<T>&& e) {
         AddOpenClEvent(step_name, e.get_event());
     }
 

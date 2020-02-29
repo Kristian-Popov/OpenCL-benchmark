@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "duration.hpp"
+#include "detail/duration.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

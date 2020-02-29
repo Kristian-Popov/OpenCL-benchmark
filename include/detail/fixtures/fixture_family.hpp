@@ -7,8 +7,8 @@
 #include <vector>
 
 #include "boost/optional.hpp"
-#include "fixtures/fixture.hpp"
-#include "fixtures/fixture_id.hpp"
+#include "detail/fixtures/fixture.hpp"
+#include "detail/fixtures/fixture_id.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

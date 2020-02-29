@@ -6,8 +6,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "devices/platform_list.hpp"
-#include "fixtures/fixture_family.hpp"
+#include "detail/devices/platform_list.hpp"
+#include "detail/fixtures/fixture_family.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

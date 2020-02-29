@@ -1,8 +1,8 @@
 #ifndef KPV_REPORTERS_JSON_BENCHMARK_REPORTER_H_
 #define KPV_REPORTERS_JSON_BENCHMARK_REPORTER_H_
 
-#include "devices/platform_list.hpp"
-#include "indicators/duration_indicator.hpp"
+#include "detail/devices/platform_list.hpp"
+#include "detail/indicators/duration_indicator.hpp"
 
 namespace kpv {
 namespace cl_benchmark {
@@ -11,10 +11,9 @@ public:
     JsonBenchmarkReporter(const std::string& file_name) : file_name_(file_name) {}
 
     void Initialize(const PlatformList& platform_list) {
-        tree_["baseInfo"] = {
-            {"about", "This file was built by OpenCL benchmark."},
-            {"time", GetCurrentTimeString()},
-            {"formatVersion", "0.1.0"}};
+        tree_["baseInfo"] = {{"about", "This file was built by OpenCL benchmark."},
+                             {"time", GetCurrentTimeString()},
+                             {"formatVersion", "0.1.0"}};
         for (auto& platform : platform_list.AllPlatforms()) {
             nlohmann::json devices = nlohmann::json::array();
             for (auto& device : platform->GetDevices()) {

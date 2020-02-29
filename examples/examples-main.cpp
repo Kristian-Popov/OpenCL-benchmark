@@ -13,7 +13,9 @@ struct OpenClTypeTraits {
     static const char* const short_description;
 };
 
+template <>
 const char* const OpenClTypeTraits<float>::short_description = "single precision";
+template <>
 const char* const OpenClTypeTraits<double>::short_description = "double precision";
 
 FixtureFamily CreateFactorialFixture(const PlatformList& platform_list, int32_t data_size) {

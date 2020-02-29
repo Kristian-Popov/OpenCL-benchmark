@@ -2,9 +2,9 @@
 #define KPV_OPENCL_PLATFORM_H_
 
 #include "boost/compute.hpp"
-#include "opencl_device.hpp"
-#include "platform_interface.hpp"
-#include "run_settings.hpp"
+#include "detail/devices/opencl_device.hpp"
+#include "detail/devices/platform_interface.hpp"
+#include "detail/run_settings.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

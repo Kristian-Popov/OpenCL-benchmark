@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "device_interface.hpp"
+#include "detail/devices/device_interface.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

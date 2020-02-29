@@ -6,9 +6,9 @@
 #include <vector>
 
 #include "boost/optional.hpp"
-#include "duration.hpp"
-#include "fixtures/fixture_family.hpp"
-#include "fixtures/fixture_id.hpp"
+#include "detail/duration.hpp"
+#include "detail/fixtures/fixture_family.hpp"
+#include "detail/fixtures/fixture_id.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

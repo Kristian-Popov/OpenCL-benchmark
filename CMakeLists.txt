@@ -7,11 +7,12 @@ project(kpv_cl_benchmark LANGUAGES CXX)
 
 option(KPV_CL_BENCH_BUILD_EXAMPLES "Build the examples." OFF)
 option(KPV_CL_BENCH_BUILD_TESTS "Build the tests." OFF)
+option(KPV_CL_NO_OPENCL "Do not use OpenCL. Can be turned off only if you don't need to run OpenCL fixtures." OFF)
 
 # Boost should be located in default OS location (often a case on Linux),
 # otherwise set BOOST_ROOT variable to path of Boost distribution
 # Minimal Boost version is 1.65.1
-find_package(Boost 1.65.1 REQUIRED)
+find_package(Boost 1.65.1 REQUIRED COMPONENTS log program_options)
 
 # Look for libraries in the following folders
 link_directories(${Boost_LIBRARY_DIRS})
@@ -24,14 +25,15 @@ add_subdirectory( contrib/nlohmann-json )
 add_library( ${PROJECT_NAME} INTERFACE )
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_14)
 
-if(KPV_CL_BENCH_BUILD_EXAMPLES AND KPV_CL_BENCH_BUILD_TESTS)
+if(NOT KPV_CL_NO_OPENCL)
     # Find OpenCL and Boost libraries.
     find_package(OpenCL)
     # If OpenCL was not found and we need it, use headers in contrib folder and ICD Loader library By Khronos
-    # (OpenCL.lib or libOpenCL.so)
+    # (OpenCL.lib)
     # Using this hack removes the necessity of OpenCL SDK on Windows
+    # TODO info about Linux shared objects
     # TODO replace with clew?
-    if(NOT OpenCL_FOUND)
+    if(WIN32 AND (NOT OpenCL_FOUND))
         message( "OpenCL SDK not found, build ICD Loader instead" )
         add_definitions( -DCL_TARGET_OPENCL_VERSION=220 )
         set(OPENCL_ICD_LOADER_REQUIRE_WDK OFF) # Do not require Windows Driver Kit

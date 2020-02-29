@@ -10,7 +10,7 @@ public:
     FactorialOpenClFixture(
         const std::shared_ptr<cl_benchmark::OpenClDevice>& device, int data_size);
 
-    virtual void FactorialOpenClFixture::Initialize() override;
+    virtual void Initialize() override;
 
     kpv::cl_benchmark::EventList Execute(const cl_benchmark::RuntimeParams& params) override;
 
@@ -25,8 +25,7 @@ private:
     std::vector<cl_ulong> output_data_;
     boost::compute::kernel kernel_;
     const std::shared_ptr<cl_benchmark::OpenClDevice> device_;
-    static const std::unordered_map<cl_int, cl_ulong>
-        FactorialOpenClFixture::correct_factorial_values_;
+    static const std::unordered_map<cl_int, cl_ulong> correct_factorial_values_;
 
     void GenerateData();
 };

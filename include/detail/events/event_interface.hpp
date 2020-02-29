@@ -1,7 +1,7 @@
 #ifndef KPV_EVENTS_EVENT_INTERFACE_H_
 #define KPV_EVENTS_EVENT_INTERFACE_H_
 
-#include "duration.hpp"
+#include "detail/duration.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

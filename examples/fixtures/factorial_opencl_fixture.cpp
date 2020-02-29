@@ -53,7 +53,7 @@ kpv::cl_benchmark::EventList FactorialOpenClFixture::Execute(
         boost::compute::copy_async(
             input_data_.begin(), input_data_.end(), input_device_vector.begin(), queue));
 
-    boost::compute::vector<unsigned long long> output_device_vector(data_size_, context);
+    boost::compute::vector<cl_ulong> output_device_vector(data_size_, context);
     kernel_.set_arg(0, input_device_vector);
     kernel_.set_arg(1, output_device_vector);
 

@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 
-#include "devices/device_interface.hpp"
+#include "detail/devices/device_interface.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

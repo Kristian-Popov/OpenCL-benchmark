@@ -2,7 +2,7 @@
 #define KPV_EVENTS_OPENCL_EVENT_H_
 
 #include "boost/compute.hpp"
-#include "event_interface.hpp"
+#include "detail/events/event_interface.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

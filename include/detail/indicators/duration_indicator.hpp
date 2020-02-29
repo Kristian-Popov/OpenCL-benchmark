@@ -4,9 +4,9 @@
 #include <boost/optional.hpp>
 #include <unordered_map>
 
-#include "duration.hpp"
-#include "indicator_interface.hpp"
-#include "reporters/benchmark_results.hpp"
+#include "detail/duration.hpp"
+#include "detail/indicators/indicator_interface.hpp"
+#include "detail/reporters/benchmark_results.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

@@ -29,7 +29,9 @@ struct OpenClTypeTraits {
 };
 
 // No extensions needed for single precision arithmetic
+template <>
 const char* const OpenClTypeTraits<float>::required_extension = "";
+template <>
 const char* const OpenClTypeTraits<double>::required_extension = "cl_khr_fp64";
 
 constexpr const char* const kCompilerOptions = "-Werror";

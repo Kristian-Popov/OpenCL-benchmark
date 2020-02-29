@@ -5,9 +5,9 @@
 #include <memory>
 #include <vector>
 
-#include "devices/opencl_platform.hpp"
-#include "devices/platform_interface.hpp"
-#include "run_settings.hpp"
+#include "detail/devices/opencl_platform.hpp"
+#include "detail/devices/platform_interface.hpp"
+#include "detail/run_settings.hpp"
 
 namespace kpv {
 namespace cl_benchmark {
@@ -18,7 +18,7 @@ public:
             boost::compute::system::platforms();
         opencl_platforms_.reserve(opencl_platforms.size());
         for (boost::compute::platform& platform : opencl_platforms) {
-            auto& ptr = std::make_shared<OpenClPlatform>(platform);
+            auto ptr = std::make_shared<OpenClPlatform>(platform);
             ptr->PopulateDeviceList(device_config);
             all_platforms_.push_back(ptr);
             opencl_platforms_.push_back(ptr);

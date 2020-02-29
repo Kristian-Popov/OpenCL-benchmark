@@ -1,7 +1,7 @@
 #ifndef KPV_FIXTURE_AUTOREGISTRAR_H_
 #define KPV_FIXTURE_AUTOREGISTRAR_H_
 
-#include "fixture_registry.hpp"
+#include "detail/fixture_registry.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

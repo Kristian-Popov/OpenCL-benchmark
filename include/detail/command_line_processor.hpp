@@ -8,7 +8,7 @@
 #include <boost/program_options.hpp>
 #include <boost/tokenizer.hpp>
 
-#include "fixture_runner.hpp"
+#include "detail/fixture_runner.hpp"
 
 namespace kpv {
 namespace cl_benchmark {

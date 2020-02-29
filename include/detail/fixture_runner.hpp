@@ -9,14 +9,14 @@
 #include <unordered_set>
 #include <vector>
 
-#include "devices/opencl_device.hpp"
-#include "devices/platform_list.hpp"
-#include "duration.hpp"
-#include "fixture_registry.hpp"
-#include "fixtures/fixture.hpp"
-#include "fixtures/fixture_family.hpp"
-#include "reporters/json_benchmark_reporter.hpp"
-#include "run_settings.hpp"
+#include "detail/devices/opencl_device.hpp"
+#include "detail/devices/platform_list.hpp"
+#include "detail/duration.hpp"
+#include "detail/fixture_registry.hpp"
+#include "detail/fixtures/fixture.hpp"
+#include "detail/fixtures/fixture_family.hpp"
+#include "detail/reporters/json_benchmark_reporter.hpp"
+#include "detail/run_settings.hpp"
 
 namespace kpv {
 namespace cl_benchmark {
@@ -82,14 +82,14 @@ public:
                                 << " fixture categories to run";
 
         int family_index = 1;  // Used for logging only
-        for (const auto& p : *fixture_registry) {
+        for (auto& p : *fixture_registry) {
             if (categories_to_run.count(p.first) == 0) {
                 // This fixture is in exclude list, skip it
                 BOOST_LOG_TRIVIAL(info) << "Skipping category " << p.first;
                 continue;
             }
 
-            FixtureFamily& fixture_family = p.second(platform_list);
+            FixtureFamily fixture_family = p.second(platform_list);
             std::string fixture_name = fixture_family.name;
             FixtureFamilyResult ff_result;  // Short for "fixture family result"
             ff_result.name = fixture_family.name;
@@ -139,8 +139,9 @@ public:
                     RuntimeParams params;
                     params.additional_params = settings.additional_params;
 
+                    EventList warmup_ev_list = fixture->Execute(params);
                     IterationInfo warmup_result =
-                        AddIteration(fixture->Execute(params), ff_result, fixture_result);
+                        AddIteration(warmup_ev_list, ff_result, fixture_result);
 
                     Duration total_operation_duration = std::accumulate(
                         warmup_result.durations.cbegin(), warmup_result.durations.cend(),
@@ -166,7 +167,8 @@ public:
                     }
 
                     for (int i = 0; i < iteration_count; ++i) {
-                        AddIteration(fixture->Execute(params), ff_result, fixture_result);
+                        EventList ev_list = fixture->Execute(params);
+                        AddIteration(ev_list, ff_result, fixture_result);
                     }
 
                     fixture->Finalize();

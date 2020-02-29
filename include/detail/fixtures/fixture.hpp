@@ -7,9 +7,9 @@
 #include <unordered_map>
 #include <vector>
 
-#include "devices/device_interface.hpp"
-#include "duration.hpp"
-#include "events/event_list.hpp"
+#include "detail/devices/device_interface.hpp"
+#include "detail/duration.hpp"
+#include "detail/events/event_list.hpp"
 
 namespace kpv {
 namespace cl_benchmark {
