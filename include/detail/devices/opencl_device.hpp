@@ -31,7 +31,7 @@ public:
         return Name();
     }
 
-    std::weak_ptr<PlatformInterface> platform() { return platform_; }
+    std::weak_ptr<PlatformInterface> platform() override { return platform_; }
 
 private:
     boost::compute::device device_;

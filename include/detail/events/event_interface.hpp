@@ -9,6 +9,7 @@ class EventInterface {
 public:
     virtual Duration GetDuration() = 0;
     virtual void Wait() = 0;
+    virtual ~EventInterface() {}
 };
 }  // namespace cl_benchmark
 }  // namespace kpv

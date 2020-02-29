@@ -10,7 +10,8 @@ template <typename T>
 class CuboidOpenClFixture final : public cl_benchmark::Fixture {
 public:
     // data_size is amount of cuboids that are processed
-    CuboidOpenClFixture(const std::shared_ptr<cl_benchmark::OpenClDevice>& device, int data_size);
+    CuboidOpenClFixture(const std::shared_ptr<cl_benchmark::OpenClDevice>& device, int data_size)
+        : device_(device), data_size_(data_size) {}
 
     std::vector<std::string> GetRequiredExtensions() override;
 

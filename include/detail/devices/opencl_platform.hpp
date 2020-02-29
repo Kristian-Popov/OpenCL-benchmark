@@ -25,7 +25,7 @@ public:
         if (device_config.other_opencl_devices) {
             ConcatVectors(
                 devices,
-                opencl_platform_.devices(CL_DEVICE_TYPE_ACCELERATOR || CL_DEVICE_TYPE_CUSTOM));
+                opencl_platform_.devices(CL_DEVICE_TYPE_ACCELERATOR | CL_DEVICE_TYPE_CUSTOM));
         }
 
         // Device may belong to more than one class, so remove duplicates

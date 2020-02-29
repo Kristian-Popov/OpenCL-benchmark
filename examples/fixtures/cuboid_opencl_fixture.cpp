@@ -63,11 +63,6 @@ boost::compute::program BuildProgram(
 }  // namespace
 
 namespace kpv {
-template <typename T>
-CuboidOpenClFixture<T>::CuboidOpenClFixture(
-    const std::shared_ptr<cl_benchmark::OpenClDevice>& device, int data_size)
-    : device_(device), data_size_(data_size) {}
-
 template <>
 void CuboidOpenClFixture<float>::Initialize() {
     GenerateData();
